@@ -1,69 +1,373 @@
-  
-  
-  
-    
-    
-    
-    
-  
-  
-  
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Tap</title>
 
-<div class="header">  
-  <div class="little-spark">✦</div>  
-  <h1>DAILY TAP</h1>  
-  <div class="subtitle">A little something for your day.</div>  
-  <div class="date" id="todayDate"></div>  
-</div>  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, #dff4f1 0, transparent 30%),
+        radial-gradient(circle at bottom left, #f8e3ea 0, transparent 28%),
+        #fbfaf7;
+      color: #263735;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 42px 20px 60px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .little-spark {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 2px;
+      font-weight: 750;
+      color: #255f5b;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #788481;
+    }
+
+    .date {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.72);
+      color: #70807d;
+      font-size: 12px;
+      box-shadow: 0 3px 14px rgba(30,70,65,.05);
+    }
+
+    .card {
+      background: rgba(255,255,255,.92);
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 17px;
+      box-shadow: 0 8px 26px rgba(46,74,70,.08);
+      border: 1px solid rgba(255,255,255,.8);
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .clinical .label {
+      color: #287d76;
+    }
+
+    .challenge .label {
+      color: #b26b83;
+    }
+
+    .kindness .label {
+      color: #8c7450;
+    }
+
+    .fact .label {
+      color: #59718e;
+    }
+
+    .question .label {
+      color: #8c6a91;
+    }
+
+    .icon {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .main-text {
+      font-size: 21px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: #263735;
+    }
+
+    .explanation {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #687572;
+    }
+
+    .clinical {
+      border-left: 5px solid #8bc9c3;
+    }
+
+    .challenge {
+      border-left: 5px solid #e5aabe;
+    }
+
+    .kindness {
+      border-left: 5px solid #d7c19d;
+    }
+
+    .fact {
+      border-left: 5px solid #9db6cf;
+    }
+
+    .question {
+      border-left: 5px solid #cbb1cf;
+    }
+
+    .footer {
+      text-align: center;
+      color: #929b99;
+      font-size: 12px;
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+
+    .heart {
+      color: #d996ad;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <div class="little-spark">✦</div>
+      <h1>DAILY TAP</h1>
+      <div class="subtitle">A little something for your day.</div>
+      <div class="date" id="todayDate"></div>
+    </div>
 
 
-<div class="card clinical">  
-  <div class="icon">🩺</div>  
-  <div class="label">Clinical Word of the Day</div>  
-  <div class="main-text" id="clinicalWord"></div>  
-  <div class="explanation" id="clinicalDefinition"></div>  
-</div>  
+    <div class="card clinical">
+      <div class="icon">🩺</div>
+      <div class="label">Clinical Word of the Day</div>
+      <div class="main-text" id="clinicalWord"></div>
+      <div class="explanation" id="clinicalDefinition"></div>
+    </div>
 
 
-<div class="card challenge">  
-  <div class="icon">🌱</div>  
-  <div class="label">Challenge Yourself Today</div>  
-  <div class="main-text" id="challenge"></div>  
-</div>  
+    <div class="card challenge">
+      <div class="icon">🌱</div>
+      <div class="label">Challenge Yourself Today</div>
+      <div class="main-text" id="challenge"></div>
+    </div>
 
 
-<div class="card kindness">  
-  <div class="icon">🤝</div>  
-  <div class="label">Do Something for Someone Else</div>  
-  <div class="main-text" id="kindness"></div>  
-</div>  
+    <div class="card kindness">
+      <div class="icon">🤝</div>
+      <div class="label">Do Something for Someone Else</div>
+      <div class="main-text" id="kindness"></div>
+    </div>
 
 
-<div class="card fact">  
-  <div class="icon">💡</div>  
-  <div class="label">Did You Know?</div>  
-  <div class="main-text" id="fact"></div>  
-</div>  
+    <div class="card fact">
+      <div class="icon">💡</div>
+      <div class="label">Did You Know?</div>
+      <div class="main-text" id="fact"></div>
+    </div>
 
 
-<div class="card question">  
-  <div class="icon">✨</div>  
-  <div class="label">Today's Question</div>  
-  <div class="main-text" id="question"></div>  
-</div>  
+    <div class="card question">
+      <div class="icon">✨</div>
+      <div class="label">Today's Question</div>
+      <div class="main-text" id="question"></div>
+    </div>
 
 
-<div class="footer">  
-  Small things count.<br>  
-  Learn something. Do something. Make someone's day.  
-  <span class="heart">♥</span>  
-</div>  
+    <div class="footer">
+      Small things count.<br>
+      Learn something. Do something. Make someone's day.
+      <span class="heart">♥</span>
+    </div>
+
+  </div>
 
 
-  
-  
-  
-  
+<script>
+
+const clinical = [
+  {
+    word: "Orthostatic",
+    definition: "Related to standing upright. Orthostatic hypotension is a drop in blood pressure that can happen after standing."
+  },
+  {
+    word: "Dyspnea",
+    definition: "The medical term for difficult or uncomfortable breathing, often described as shortness of breath."
+  },
+  {
+    word: "Aphasia",
+    definition: "Difficulty understanding or producing language due to injury or disease affecting the brain."
+  },
+  {
+    word: "Edema",
+    definition: "Swelling caused by excess fluid collecting in body tissues."
+  },
+  {
+    word: "Tachycardia",
+    definition: "A heart rate that is faster than expected for the person's situation."
+  },
+  {
+    word: "Bradycardia",
+    definition: "A heart rate that is slower than expected for the person's situation."
+  },
+  {
+    word: "Pallor",
+    definition: "Unusual paleness of the skin or mucous membranes."
+  },
+  {
+    word: "Dysphagia",
+    definition: "Difficulty swallowing."
+  },
+  {
+    word: "Ataxia",
+    definition: "Impaired balance or coordination that can affect walking and movement."
+  },
+  {
+    word: "Cyanosis",
+    definition: "A bluish or grayish appearance of the skin or mucous membranes associated with reduced oxygenation."
+  },
+  {
+    word: "Syncope",
+    definition: "A temporary loss of consciousness caused by reduced blood flow to the brain — commonly called fainting."
+  },
+  {
+    word: "Delirium",
+    definition: "An acute and fluctuating change in attention, awareness and cognition. It is not a normal part of aging."
+  }
+];
 
 
+const challenges = [
+  "Take a 10-minute walk today — even if it's just around the block.",
+  "Drink a full glass of water before your next coffee.",
+  "Put your phone away while you eat one meal today.",
+  "Stretch your shoulders, neck and back for two minutes.",
+  "Step outside for five minutes and actually notice what's around you.",
+  "Do one small thing today that you've been putting off.",
+  "Take five slow breaths before moving on to your next task.",
+  "Give yourself ten minutes today with absolutely nothing productive to accomplish.",
+  "Notice one thing your body did for you today.",
+  "Eat something today without multitasking.",
+  "Go to bed 15 minutes earlier tonight.",
+  "Take the longer route somewhere today and get a few extra steps."
+];
+
+
+const kindness = [
+  "Tell someone one specific thing you appreciate about them.",
+  "Offer help before someone has to ask for it.",
+  "Send a quick message to someone you haven't checked on lately.",
+  "Thank someone whose work often goes unnoticed.",
+  "Let someone go ahead of you today.",
+  "Ask someone how they're doing — and actually listen to the answer.",
+  "Give a genuine compliment that has nothing to do with appearance.",
+  "Do one small task that makes someone else's day easier.",
+  "Tell a coworker about something you noticed they did well.",
+  "Reach out to someone who might be having a difficult week.",
+  "Leave a space a little better than you found it.",
+  "Make someone laugh today."
+];
+
+
+const facts = [
+  "Smell has unusually direct connections with brain regions involved in emotion and memory, which is one reason a scent can suddenly bring back a vivid memory.",
+  "Your skin is your body's largest organ.",
+  "Humans blink thousands of times every day, helping clean and lubricate the surface of the eyes.",
+  "Walking after a meal can help moderate the rise in blood glucose that follows eating.",
+  "Your brain itself has no pain receptors, even though the tissues surrounding it do.",
+  "The smallest bones in the human body are found inside the middle ear.",
+  "Your left lung is slightly smaller than your right lung to make room for the heart.",
+  "Yawning isn't just caused by tiredness — researchers are still studying its roles in brain state and social behavior.",
+  "Your sense of taste and your sense of smell work together so closely that congestion can dramatically change how food tastes.",
+  "Adults typically have 206 bones, but babies are born with more because some bones fuse as they grow.",
+  "The human heart beats roughly 100,000 times in a typical day.",
+  "Even a short period outdoors can provide a useful mental reset during a busy day."
+];
+
+
+const questions = [
+  "What made you laugh today?",
+  "What's one thing you're looking forward to?",
+  "What did you do well today?",
+  "When did you last do something just because you enjoyed it?",
+  "What's something small that's making your life better lately?",
+  "Who made your day easier this week?",
+  "What's something you've learned recently?",
+  "What would make today feel like a good day?",
+  "What's something you're grateful your past self did for you?",
+  "What are you giving too much energy to right now?",
+  "What's one thing you want to remember about today?",
+  "Who could probably use a little encouragement from you?"
+];
+
+
+// Get today's date
+const now = new Date();
+
+document.getElementById("todayDate").textContent =
+  now.toLocaleDateString("en-CA", {
+    weekday: "long",
+    month: "long",
+    day: "numeric"
+  });
+
+
+// This produces a different number every calendar day.
+const startOfYear = new Date(now.getFullYear(), 0, 0);
+const diff = now - startOfYear;
+
+const dayOfYear = Math.floor(
+  diff / (1000 * 60 * 60 * 24)
+);
+
+
+// Different offsets keep the categories from matching
+// the exact same rotation.
+const c = clinical[dayOfYear % clinical.length];
+const ch = challenges[(dayOfYear + 3) % challenges.length];
+const k = kindness[(dayOfYear + 6) % kindness.length];
+const f = facts[(dayOfYear + 8) % facts.length];
+const q = questions[(dayOfYear + 10) % questions.length];
+
+
+document.getElementById("clinicalWord").textContent = c.word;
+document.getElementById("clinicalDefinition").textContent = c.definition;
+
+document.getElementById("challenge").textContent = ch;
+
+document.getElementById("kindness").textContent = k;
+
+document.getElementById("fact").textContent = f;
+
+document.getElementById("question").textContent = q;
+
+</script>
+
+</body>
+</html>
